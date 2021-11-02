@@ -22,19 +22,17 @@ const BlogPage = ({ data }) => {
   }
   export const pageQuery = graphql`
   query {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+    allMdx(sort: {fields: frontmatter___title, order: DESC}) {
       nodes {
         id
         slug
         frontmatter {
           title
-          date
-          author
+          date(formatString: "MM/DD/YYYY")
         }
       }
     }
   }
-  
   `
 
   export default BlogPage
