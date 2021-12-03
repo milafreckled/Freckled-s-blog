@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
@@ -7,7 +10,7 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    // 
+    //
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -29,9 +32,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-page-creator",
       options: {
-      path: `${__dirname}/blog`,
+        path: `${__dirname}/blog`,
       },
     },
     {
@@ -42,6 +56,16 @@ module.exports = {
           default: require.resolve("./src/components/layout.js"),
         },
         extensions: [`.mdx`, `.md`],
+      },
+    },
+
+    {
+      resolve: `gatsby-source-contentful`,
+
+      options: {
+        spaceId: "c9hw3pub0ugj",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
       },
     },
   ],

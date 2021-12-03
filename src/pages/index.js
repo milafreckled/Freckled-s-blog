@@ -1,6 +1,7 @@
-import * as React from "react"
-import Layout from "../components/layout"
-import { StaticImage } from "gatsby-plugin-image"
+import * as React from "react";
+import Layout from "../components/layout";
+import { StaticImage } from "gatsby-plugin-image";
+import { article } from "./base.module.css";
 // styles
 // data
 const links = [
@@ -47,18 +48,19 @@ const links = [
       "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
     color: "#663399",
   },
-]
+];
 
 // markup
 const IndexPage = () => {
   return (
     <Layout pageTitle="Home Page">
-      <article>Hello, dear reader! I am pleased to welcome you in this cozy place where you can learn, grow and aspire. Let's share inspiration together!</article>
-      <StaticImage 
-      alt="Blog's logo" 
-      src="../images/freckled's.png" />
-      </Layout>
-  )
-}
+      <article className={article}>
+        Hello, dear reader! I am pleased to welcome you in this cozy place where
+        you can learn, grow and aspire. Let's share inspiration together!
+      </article>
+      <StaticImage alt="Blog's logo" src="../images/freckled.png" width="800" />
+    </Layout>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
