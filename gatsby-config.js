@@ -35,12 +35,12 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `GatsbyJS`,
-        short_name: `starter`,
+        short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#663399`,
         display: `standalone`,
-        icon: `src/images/icon.png`,
-        icon_options: { purpose: `maskable` },
+        icon: `src/images/logo.png`,
+        crossOrigin: `use-credentials`,
       },
     },
     {
@@ -62,11 +62,10 @@ module.exports = {
 
     {
       resolve: `gatsby-source-contentful`,
-
       options: {
         spaceId: "c9hw3pub0ugj",
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        host: process.env.CONTENTFUL_HOST,
+        accessToken: "S94Poq0wRFP19srQeBP46_EU29tEU6-cCMTUVfIqwkA",
+        host: "preview.contentful.com",
       },
     },
   ],
