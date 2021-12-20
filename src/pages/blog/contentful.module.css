@@ -11,3 +11,16 @@
 .bold{
     font-weight: 900;
 }
+.postImage{
+    height: 100%;
+    width: 500px;
+}
+.postImage2{
+    height: 100%;
+    width: 300px;
+    float: left;
+    margin-right: 1rem;
+}
+.alignedText{
+    text-align: justify;
+}

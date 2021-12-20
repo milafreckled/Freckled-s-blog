@@ -3,10 +3,16 @@ import Layout from "../../components/layout";
 import { graphql } from "gatsby";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
-import { heading, quote, bold }  from './contentful.module.css'
+import {
+  heading,
+  quote,
+  bold,
+  alignedText,
+  postImage2,
+} from "./contentful.module.css";
 const BlogPost = ({ data }) => {
   const Bold = ({ children }) => <span className={bold}>{children}</span>;
-  const Text = ({ children }) => <p>{children}</p>;
+  const Text = ({ children }) => <p className={alignedText}>{children}</p>;
   const post = data.contentfulBlog;
   const document = {
     nodeType: "document",
@@ -31,8 +37,11 @@ const BlogPost = ({ data }) => {
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-      [BLOCKS.HEADING_1]: (text) => <h2 className={heading}>{text}</h2>,
-      [BLOCKS.QUOTE]: (text) => <blockquote className={quote}>{text}</blockquote>,
+      [BLOCKS.HEADING_1]: (node, text) => <h1 className={heading}>{text}</h1>,
+      [BLOCKS.HEADING_2]: (node, text) => <h2 className={heading}>{text}</h2>,
+      [BLOCKS.QUOTE]: (text) => (
+        <blockquote className={quote}>{text}</blockquote>
+      ),
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         return (
           <>
@@ -49,8 +58,12 @@ const BlogPost = ({ data }) => {
     <Layout title="Frecled's blog posts">
       <h1>{post.title}</h1>
       {/* <GatsbyImage image={pos} alt={data.mdx.frontmatter.hero_image_alt} /> */}
-      <img src={post.thumbnail.fluid.src} alt={post.title} />
-      <p>Published on {post.createdAt}</p>
+      <img
+        className={postImage2}
+        src={post.thumbnail.fluid.src}
+        alt={post.title}
+      />
+      <em>Published on {post.createdAt}</em>
       {renderRichText(post.body, options)}
     </Layout>
   );
@@ -74,4 +87,6 @@ export const query = graphql`
     }
   }
 `;
+
+
 export default BlogPost;

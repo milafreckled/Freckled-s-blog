@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { postImage } from "./contentful.module.css";
 
 const BlogPage = ({ data }) => {
   const Bold = ({ children }) => <span className="bold">{children}</span>;
@@ -32,7 +33,7 @@ const BlogPage = ({ data }) => {
         );
       },
     },
-    renderText: (text) => text.substring(0, 100),
+    renderText: (text) => text.replace(".", "!"),
   };
 
   return (
@@ -43,14 +44,18 @@ const BlogPage = ({ data }) => {
             <Link to={`/blog/${node.slug}`}>
               <h2>{node.title}</h2>
             </Link>
-            <p>
+            <em>
               Posted: {node.createdAt}, author: {node.author}
-            </p>
+            </em>
+            {documentToHtmlString(node.body, options)}
             <p>
-              {documentToHtmlString(node.body, options)}
               <Link to={`/blog/${node.slug}`}>Read more</Link>
             </p>
-            <GatsbyImage image={getImage(node.thumbnail)} width="300" alt="" />
+            <GatsbyImage
+              image={getImage(node.thumbnail)}
+              className={postImage}
+              alt=""
+            />
           </article>
         </div>
       ))}
@@ -59,11 +64,11 @@ const BlogPage = ({ data }) => {
 };
 export const pageQuery = graphql`
   query {
-    allContentfulBlog {
+    allContentfulBlog(filter: { node_locale: { eq: "en-US" } }) {
       nodes {
         id
         slug
-        createdAt(formatString: "dddd m, yyyy")
+        createdAt(formatString: "D-M-Y")
         author
         title
         thumbnail {
