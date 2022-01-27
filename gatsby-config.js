@@ -32,18 +32,7 @@ module.exports = {
         path: `${__dirname}/blog`,
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#663399`,
-        display: `standalone`,
-        icon: `src/images/icon.png`,
-        crossOrigin: `use-credentials`,
-      },
-    },
+
     {
       resolve: "gatsby-plugin-page-creator",
       options: {
@@ -64,8 +53,8 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: "c9hw3pub0ugj",
-        accessToken: "S94Poq0wRFP19srQeBP46_EU29tEU6-cCMTUVfIqwkA",
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
         host: "preview.contentful.com",
       },
     },

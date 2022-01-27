@@ -9,8 +9,6 @@ import {
   navLinks,
   navLinkItem,
   navLinkText,
-  localeButton,
-  activeButton,
   navLinksMobile,
   navLinkItemMobile,
   navLinkTextMobile,
@@ -38,7 +36,8 @@ export default function Layout({ pageTitle, children }) {
   // const dispatch = React.useContext(dispatchStateContext);
   //const setLocale = React.useCallback((locale) => dispatch({ locale }), []);
   const [isOpenMenu, setIsOpenMenu] = React.useState(false);
-  const isMobile = window.innerWidth < 700;
+  const isMobile = () =>
+    typeof window !== "undefined" && window.innerWidth < 700;
 
   return (
     <>
