@@ -1,18 +1,21 @@
 .container {
     position: relative;
     margin: auto;
-
     max-width: 800px;
     font-family: sans-serif;
 }
+@media screen and (max-width: 699px){
+    .container{
+        margin-inline: 20px;
+    }
+    }
   .header{
       width: 100vw;
       margin: 0;
-      padding: 0;
+      padding: 1.2% 3%;
       background-color: rebeccapurple;
       color: white;
       display: flex;
-      padding: 1rem 2rem;
       position: relative;
   }
   .heading{
@@ -24,21 +27,39 @@
       display: inline-flex;
       justify-content: space-between;
       list-style: none;
-      padding-left: 0;
+  
+  }
+  .nav-links-mobile{
+       position: relative;
+       height: 100%;
+       display: flex;
+       flex-direction: column;
+       gap: 10vh;
+       list-style: none;
   }
   .nav-link-item{
+      margin-top: -2%;
       padding-inline: 2rem;
   }
+  .nav-link-item-mobile{
+    max-width: 90vw;
+    padding-inline: 5vw;
+}
   .nav-link-text{
       color: white;
   }
+  .nav-link-text-mobile{
+    color: white;
+    line-height: 1.5;
+    font-size: 24px;
+}
   .site-title {
     font-size: 3rem;
     font-weight: 700;
     margin: 0 1rem;
     display: inline;
   }
-  body{
+  .body{
       margin: 0;
       overflow-x: hidden;
     
@@ -46,4 +67,17 @@
 .logoImage{
     transform: scale(1.5);
     image-rendering: crispEdges;
+}
+.localeButton{
+    margin: -2% 2% 0;
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}
+.activeButton{
+    color: rebeccapurple;
+    background: white;
+    font-weight: 900;
 }

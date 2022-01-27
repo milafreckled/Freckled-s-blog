@@ -3,8 +3,9 @@ require("dotenv").config({
 });
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://www.freckledblog.studio",
     title: "Freckled's blog",
+    locales: ["uk-UA", "en-US"],
   },
   plugins: [
     "gatsby-plugin-image",
@@ -39,7 +40,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#663399`,
         display: `standalone`,
-        icon: `src/images/logo.png`,
+        icon: `src/images/icon.png`,
         crossOrigin: `use-credentials`,
       },
     },
@@ -63,9 +64,17 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: "c9hw3pub0ugj",
-        accessToken: "S94Poq0wRFP19srQeBP46_EU29tEU6-cCMTUVfIqwkA",
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
         host: "preview.contentful.com",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svg/,
+        },
       },
     },
   ],

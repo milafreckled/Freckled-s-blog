@@ -13,14 +13,31 @@
 }
 .postImage{
     height: 100%;
-    width: 500px;
-}
-.postImage2{
-    height: 100%;
-    width: 300px;
+    width: 100%;
+    max-height: 300px;
+    max-width: 400px;
     float: left;
     margin-right: 1rem;
 }
 .alignedText{
     text-align: justify;
+    word-break: break-word;
+    line-height: 1.6;
+}
+.buttonsContainer{
+    margin-left: 100%;
+}
+.localeButton{
+    margin: 2% 1%;
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rebeccapurple;
+    cursor: pointer;
+
+}
+.activeButton{
+    text-decoration: underline;
+    font-weight: 900;
 }

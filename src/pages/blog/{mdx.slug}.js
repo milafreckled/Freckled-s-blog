@@ -11,7 +11,7 @@ const BlogPost = ({ data }) => {
     const post = data.mdx
     const image = getImage(data.mdx.frontmatter.hero_image);
     return (
-        <Layout title="Frecled's blog posts">
+        <Layout title="Freckled's blog posts">
                 <h2>{post.frontmatter.title}</h2>
                 <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt} />
                  <p>Published on {post.frontmatter.date}</p>

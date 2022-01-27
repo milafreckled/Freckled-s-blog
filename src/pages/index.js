@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
+import Footer from "../components/footer";
 import { StaticImage } from "gatsby-plugin-image";
 import { article } from "./base.module.css";
 // styles
@@ -53,13 +54,20 @@ const links = [
 // markup
 const IndexPage = () => {
   return (
-    <Layout pageTitle="Home Page">
-      <article className={article}>
-        Hello, dear reader! I am pleased to welcome you in this cozy place where
-        you can learn, grow and aspire. Let's share inspiration together!
-      </article>
-      <StaticImage alt="Blog's logo" src="../images/freckled.png" width="800" />
-    </Layout>
+    <>
+      <Layout pageTitle="Home Page">
+        <article className={article}>
+          Hello, dear reader! I am pleased to welcome you in this cozy place
+          where you can learn, grow and aspire. Let's share inspiration
+          together!
+        </article>
+        <StaticImage
+          alt="Blog's logo"
+          src="../images/freckled.png"
+          width="800"
+        />
+      </Layout>
+    </>
   );
 };
 
