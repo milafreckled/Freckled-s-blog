@@ -27,7 +27,6 @@
       display: inline-flex;
       justify-content: space-between;
       list-style: none;
-  
   }
   .nav-links-mobile{
        position: relative;
@@ -77,6 +76,7 @@
     color: white;
 }
 .activeButton{
+    text-decoration: underline;
     color: rebeccapurple;
     background: white;
     font-weight: 900;
