@@ -13,6 +13,18 @@ module.exports = {
     "gatsby-transformer-sharp",
     //
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `FreckledBlog`,
+        short_name: `FB`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
