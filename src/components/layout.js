@@ -12,6 +12,7 @@ import {
   navLinksMobile,
   navLinkItemMobile,
   navLinkTextMobile,
+  menu,
 } from "./layout.module.css";
 import Logo from "../images/logo.svg";
 import OpenMenu from "../svg/opened-menu.svg";
@@ -36,8 +37,8 @@ export default function Layout({ pageTitle, children }) {
   // const dispatch = React.useContext(dispatchStateContext);
   //const setLocale = React.useCallback((locale) => dispatch({ locale }), []);
   const [isOpenMenu, setIsOpenMenu] = React.useState(false);
-  const isMobile = () =>
-    typeof window !== "undefined" && window.innerWidth < 700;
+  const [isMobile, setIsMobile] = React.useState(false);
+  // typeof window !== "undefined" && window.innerWidth < 700;
 
   return (
     <>
@@ -50,10 +51,16 @@ export default function Layout({ pageTitle, children }) {
           {isMobile ? (
             <nav>
               {!isOpenMenu ? (
-                <OpenMenu onClick={() => setIsOpenMenu(true)} />
+                <OpenMenu
+                  className={menu}
+                  onClick={() => setIsOpenMenu(true)}
+                />
               ) : (
                 <>
-                  <CloseMenu onClick={() => setIsOpenMenu(false)} />
+                  <CloseMenu
+                    className={menu}
+                    onClick={() => setIsOpenMenu(false)}
+                  />
                   <MobileMenu />
                 </>
               )}

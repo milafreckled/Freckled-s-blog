@@ -60,8 +60,7 @@
   }
   .body{
       margin: 0;
-      overflow-x: hidden;
-    
+      overflow-x: hidden;  
 }
 .logoImage{
     transform: scale(1.5);
@@ -80,4 +79,10 @@
     color: rebeccapurple;
     background: white;
     font-weight: 900;
+}
+.menu{
+    max-width: 150px;
+    max-height: 150px;
+    position: relative;
+    left: 80%;
 }

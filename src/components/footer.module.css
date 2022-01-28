@@ -2,10 +2,9 @@
     display: flex;
     justify-content: center;  
     gap: 8px;
-    margin: 1rem auto;
+    margin: 10% auto 1rem ;
     position: relative;
     left: 50%;
-    bottom: 5%;
     transform: translateX(-50%);
 }
 .icon{

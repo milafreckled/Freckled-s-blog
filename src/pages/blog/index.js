@@ -9,7 +9,6 @@ import {
   activeButton,
   buttonsContainer,
 } from "./contentful.module.css";
-import { globalStateContext } from "../../contexts/GlobalState";
 const document = {
   nodeType: "document",
   content: [
@@ -109,7 +108,7 @@ const BlogPage = ({ data }) => {
                     <br />
                     {node.body?.childMarkdownRemark.excerpt}
 
-                    <Link to={`/blog/${node.slug}`}>Read more</Link>
+                    <Link to={`/blog/${node.slug}`}>Читати далі</Link>
                   </article>
                 </Grid>
               </Grid>
@@ -154,7 +153,7 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-        gatsbyPath(filePath: "/blog/{ContentfulBlog.slug}")
+        gatsbyPath(filePath: "/{ContentfulBlog.slug}")
         topic
         title
         id
@@ -177,7 +176,7 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-        gatsbyPath(filePath: "/blog/{ContentfulBlog.slug}")
+        gatsbyPath(filePath: "/{ContentfulBlog.slug}")
         topic
         title
         id
