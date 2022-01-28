@@ -153,7 +153,7 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-        gatsbyPath(filePath: "/{ContentfulBlog.slug}")
+
         topic
         title
         id
@@ -176,7 +176,7 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-        gatsbyPath(filePath: "/{ContentfulBlog.slug}")
+
         topic
         title
         id
