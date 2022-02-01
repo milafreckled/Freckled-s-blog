@@ -30,39 +30,6 @@ const document = {
   ],
 };
 const BlogPage = ({ data }) => {
-  // const Bold = ({ children }) => <span className="bold">{children}</span>;
-  // const Text = ({ children }) => <p className="align-center">{children}</p>;
-  // const options = {
-  //   renderMark: {
-  //     [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
-  //   },
-  //   renderNode: {
-  //     /* ANOTHER USEFUL BLOCKS */
-  //     // [BLOCKS.HEADING_1]
-  //     // [BLOCKS.HEADING_2]
-  //     // [BLOCKS.UL_LIST]
-  //     // [BLOCKS.QUOTE]
-  //     // [BLOCKS.HR]
-  //     // [INLINES.ASSET_HYPERLINK]
-  //     [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-  //     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-  //       return (
-  //         <>
-  //           <h2>Embedded Asset</h2>
-  //           <pre>
-  //             <code>{JSON.stringify(node, null, 2)}</code>
-  //           </pre>
-  //         </>
-  //       );
-  //     },
-  //   },
-  //   // renderText: (text) => text.replace("?", "?!"),
-  //   renderText: (text) => text.substring(0, 100),
-  // };
-  // const state = React.useContext(globalStateContext);
-  // React.useEffect(() => {
-  //   console.log(state.locale);
-  // }, []);
   const [locale, setLocale] = React.useState("uk-UA");
   return (
     <>
@@ -153,7 +120,6 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-
         topic
         title
         id
@@ -176,7 +142,6 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-
         topic
         title
         id
