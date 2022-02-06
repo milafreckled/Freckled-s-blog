@@ -1,13 +1,7 @@
 .heading{
     color: rebeccapurple;
 }
-.quote{
-    display: block;
-    text-align: center;
-    color: #666;
-    margin: 1rem 0; 
-    font-style: italic;                   
-}
+
 .bold{
     font-weight: 900;
 }
@@ -31,18 +25,18 @@
     border-image: repeating-linear-gradient(30deg, rebeccapurple, white 20px) 60;
 }
 .localeButton{
+    line-height: 1.5;
+    letter-spacing: 1.5px;
     margin: 2% 1%;
     text-transform: uppercase;
-    border: 1px solid rebeccapurple;
-    border-radius: 10%;
+    border: none;
     outline: none;
     cursor: pointer;
     background: transparent;
-    color: rebeccapurple;
+    color: gray;
 }
 .activeButton{
     font-weight: 900;
     border: none;
-    color: white;
-    background-color: rebeccapurple;
+    color: rebeccapurple;
 }

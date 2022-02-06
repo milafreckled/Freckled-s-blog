@@ -40,5 +40,8 @@
     "react": "^17.0.1",
     "react-create-global-state": "^1.0.0",
     "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "react-device-detect": "^2.1.2"
   }
 }

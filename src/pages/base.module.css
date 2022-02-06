@@ -39,3 +39,53 @@
       margin: 0;
       overflow-x: hidden;
 }
+.home-quote{
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.75;
+    display: block;
+    font-style: italic;
+    color: rgb(167, 162, 162);
+    margin: 2rem 0;                  
+}
+.quote-text{
+    display: inline;
+    opacity: 0;
+    stroke-dasharray: 735;
+animation: textDraw 4s 
+cubic-bezier(.56,-0.04,.32,.7) forwards;
+animation-delay: 1s;
+padding: 0 1em;
+}
+.quote-text:nth-of-type(2n){
+    vertical-align: super;
+}
+.quote-text:nth-of-type(2n+1){
+    vertical-align: sub;
+}
+@keyframes textDraw{
+0%{
+    fill:rgb(255, 255, 255, 0);
+    stroke:#fff;
+    stroke-dashoffset: 800;
+    opacity: 1;
+}
+40%{
+    fill:rgb(255, 255, 255, 0.0);
+stroke-dashoffset: 0;
+}
+100%{
+    fill:rgb(255, 255, 255, 1);
+    stroke-dashoffset: 0;
+    opacity: 1;
+}
+}
+.authorName::before{
+    content: "–";
+    margin-right: 1em;
+}
+.authorName{
+    display: inline;
+    text-align: right;
+    font-size: .875rem;
+}

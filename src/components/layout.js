@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import Footer from "./footer";
 import {
   container,
   body,
@@ -13,14 +12,13 @@ import {
   navLinkItemMobile,
   navLinkTextMobile,
   menu,
+  navigation,
 } from "./layout.module.css";
 import Logo from "../images/logo.svg";
 import OpenMenu from "../svg/opened-menu.svg";
 import CloseMenu from "../svg/closed-menu.svg";
-import {
-  globalStateContext,
-  dispatchStateContext,
-} from "../contexts/GlobalState";
+import Footer from "./footer";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 export default function Layout({ pageTitle, children }) {
   const data = useStaticQuery(graphql`
@@ -33,12 +31,10 @@ export default function Layout({ pageTitle, children }) {
       }
     }
   `);
-  // const state = React.useContext(globalStateContext);
-  // const dispatch = React.useContext(dispatchStateContext);
-  //const setLocale = React.useCallback((locale) => dispatch({ locale }), []);
+
   const [isOpenMenu, setIsOpenMenu] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
   // typeof window !== "undefined" && window.innerWidth < 700;
+  const { width, height } = useWindowDimensions();
 
   return (
     <>
@@ -47,14 +43,17 @@ export default function Layout({ pageTitle, children }) {
           <title>
             {pageTitle} | {data.site.siteMetadata.title}
           </title>
-          <Logo />
-          {isMobile ? (
-            <nav>
+
+          {width <= 700 ? (
+            <nav className={navigation}>
               {!isOpenMenu ? (
-                <OpenMenu
-                  className={menu}
-                  onClick={() => setIsOpenMenu(true)}
-                />
+                <>
+                  <Logo />
+                  <OpenMenu
+                    className={menu}
+                    onClick={() => setIsOpenMenu(true)}
+                  />
+                </>
               ) : (
                 <>
                   <CloseMenu
@@ -67,6 +66,7 @@ export default function Layout({ pageTitle, children }) {
             </nav>
           ) : (
             <nav>
+              <Logo />
               <ul className={navLinks}>
                 <li className={navLinkItem}>
                   <Link to="/" className={navLinkText}>
@@ -105,7 +105,7 @@ function MobileMenu() {
           Home
         </Link>
       </li>
-      <li className={navLinkItem}>
+      <li className={navLinkItemMobile}>
         <Link to="/about" className={navLinkTextMobile}>
           About
         </Link>

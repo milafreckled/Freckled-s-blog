@@ -1,7 +1,9 @@
 import * as React from "react";
 import Layout from "../components/layout";
-import { StaticImage } from "gatsby-plugin-image";
-import { article } from "./base.module.css";
+import { article, homeQuote, quoteText, authorName } from "./base.module.css";
+import OpenQuote from "../svg/lapki-up.svg";
+import CloseQuote from "../svg/lapki-down.svg";
+import Footer from "../components/footer";
 // styles
 // data
 const links = [
@@ -51,7 +53,8 @@ const links = [
 ];
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({ serverData }) => {
+  const { data } = serverData;
   return (
     <>
       <Layout pageTitle="Home Page">
@@ -60,14 +63,57 @@ const IndexPage = () => {
           where you can learn, grow and aspire. Let's share inspiration
           together!
         </article>
-        <StaticImage
+        {/* <StaticImage
           alt="Blog's logo"
           src="../images/freckled.png"
-          width="800"
-        />
+          width={800}
+        /> */}
+        <h2>Quote of the day:</h2>
+        <blockquote className={homeQuote}>
+          <OpenQuote className={quoteText} />
+          {data.contents.quotes[0]?.quote}
+          <br />
+          <p className={authorName}>{data.contents.quotes[0]?.author}</p>
+          <CloseQuote className={quoteText} />
+        </blockquote>
+
+        <span
+          style={{
+            zIndex: "50",
+            fontSize: "0.6em",
+            fontWeight: "bold",
+            marginLeft: "80%",
+          }}
+        >
+          <img
+            src="https://theysaidso.com/branding/theysaidso.png"
+            height="20"
+            width="20"
+            alt="theysaidso.com"
+          />
+          <a
+            href="https://theysaidso.com"
+            title="Powered by quotes from theysaidso.com"
+            style={{
+              color: "#ccc",
+              marginLeft: "4px",
+              verticalAlign: "middle",
+            }}
+          >
+            They Said So®
+          </a>
+        </span>
       </Layout>
     </>
   );
 };
-
+export async function getServerData() {
+  const res = await fetch(`https://quotes.rest/qod.json`);
+  const data = await res.json();
+  return {
+    props: {
+      data: data,
+    },
+  };
+}
 export default IndexPage;

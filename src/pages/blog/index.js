@@ -2,12 +2,14 @@ import * as React from "react";
 import Layout from "../../components/layout";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Footer from "../../components/footer";
 import Grid from "@mui/material/Grid";
 import {
   postImage,
   localeButton,
   activeButton,
   buttonsContainer,
+  quote,
 } from "./contentful.module.css";
 const document = {
   nodeType: "document",
@@ -120,7 +122,6 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-        topic
         title
         id
         thumbnail {
@@ -142,7 +143,6 @@ export const pageQuery = graphql`
         slug
         node_locale
         createdAt(formatString: "MMMM DD, YYYY")
-        topic
         title
         id
         thumbnail {
