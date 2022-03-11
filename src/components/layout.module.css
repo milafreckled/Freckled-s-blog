@@ -1,3 +1,5 @@
+@import "index";
+
 .container {
     position: relative;
     height: 100%;
@@ -8,6 +10,7 @@
     overflow-y: hidden;
 }
 .navigation{
+    overflow-y: hidden;
     z-index: 2;
 }
 @media screen and (max-width: 699px){
@@ -20,14 +23,14 @@
       width: 100vw;
       margin: 0;
       padding: 1.2% 3%;
-      background-color: rebeccapurple;
+      background-color: var(--primary-color);
       color: white;
       display: flex;
     
       position: sticky;
   }
   .heading{
-      color: rebeccapurple;
+      color: var(--primary-color);
   }
   .nav-links{
       position: absolute;
@@ -42,11 +45,11 @@
 }
 .nav-link-text{
     text-decoration: none;
-    color: white;
-    transition: 0.5s ease-in text-decoration;
+    color: var(--link-text-color);
+    transition: text-decoration 0.5s linear;
 }
   .nav-link-text:hover{
-    text-decoration: #fff underline;
+    text-decoration: var(--link-text-color) underline;
     text-decoration-skip: ink;
     text-underline-position: under;
 
@@ -66,15 +69,21 @@
     image-rendering: crispEdges;
 }
 .localeButton{
-    margin: -2% 2% 0;
+    margin-top: -1.5%;
     text-transform: uppercase;
     background: transparent;
     border: none;
     outline: none;
-    color: rebeccapurple
+    color: var(--link-text-color); 
+    cursor: pointer;
+}
+.localeButton:nth-of-type(1)::after{
+    color: rgba(255, 255, 255, 0.6);
+    content: '|';
+    margin-left: 25%;
+    line-height: 1.2;
 }
 .activeButton{
-    color: rgba(112, 120, 105, 0.6);
     font-weight: 900;
 }
 .menu{
@@ -82,7 +91,6 @@
     max-height: 40px;
     position: absolute;
     left: calc(90% - 20px);
-   ;
 }
 .nav-links-mobile{
      padding-inline-start: 0;
@@ -103,7 +111,7 @@
    padding-inline: 5vw;
 }
 .nav-link-text-mobile{
-    color: white;
+    color: var(--link-text-color);
     line-height: 1.5;
     font-size: 24px;
 }

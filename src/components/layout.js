@@ -13,14 +13,19 @@ import {
   navLinkTextMobile,
   menu,
   navigation,
+  localeButton,
+  activeButton,
 } from "./layout.module.css";
 import Logo from "../images/logo.svg";
 import OpenMenu from "../svg/opened-menu.svg";
 import CloseMenu from "../svg/closed-menu.svg";
 import Footer from "./footer";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
+import { CHANGE_LOCALE } from "../redux/actions";
 
-export default function Layout({ pageTitle, children }) {
+function Layout({ locale, pageTitle, children }) {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -31,11 +36,9 @@ export default function Layout({ pageTitle, children }) {
       }
     }
   `);
-
   const [isOpenMenu, setIsOpenMenu] = React.useState(false);
-  // typeof window !== "undefined" && window.innerWidth < 700;
-  const { width, height } = useWindowDimensions();
-
+  const { width } = useWindowDimensions();
+  const dispatch = useDispatch();
   return (
     <>
       <div className={body}>
@@ -60,7 +63,7 @@ export default function Layout({ pageTitle, children }) {
                     className={menu}
                     onClick={() => setIsOpenMenu(false)}
                   />
-                  <MobileMenu />
+                  <MobileMenu locale={locale} />
                 </>
               )}
             </nav>
@@ -70,19 +73,43 @@ export default function Layout({ pageTitle, children }) {
               <ul className={navLinks}>
                 <li className={navLinkItem}>
                   <Link to="/" className={navLinkText}>
-                    Home
+                    {locale === "uk-UA" ? "Головна" : "Home"}
                   </Link>
                 </li>
                 <li className={navLinkItem}>
                   <Link to="/about" className={navLinkText}>
-                    About
+                    {locale === "uk-UA" ? "Про автора" : "About"}
                   </Link>
                 </li>
                 <li className={navLinkItem}>
                   <Link to="/blog" className={navLinkText}>
-                    Blog
+                    {locale === "uk-UA" ? "Блог" : "Blog"}
                   </Link>
                 </li>
+                <button
+                  onClick={() =>
+                    dispatch({ type: CHANGE_LOCALE, payload: "uk-UA" })
+                  }
+                  className={
+                    locale === "uk-UA"
+                      ? `${localeButton} ${activeButton}`
+                      : localeButton
+                  }
+                >
+                  UA
+                </button>
+                <button
+                  onClick={() =>
+                    dispatch({ type: CHANGE_LOCALE, payload: "en-US" })
+                  }
+                  className={
+                    locale === "en-US"
+                      ? `${localeButton} ${activeButton}`
+                      : localeButton
+                  }
+                >
+                  EN
+                </button>
               </ul>
             </nav>
           )}
@@ -97,24 +124,30 @@ export default function Layout({ pageTitle, children }) {
   );
 }
 
-function MobileMenu() {
+function MobileMenu({ locale }) {
   return (
     <ul className={navLinksMobile}>
       <li className={navLinkItemMobile}>
         <Link to="/" className={navLinkTextMobile}>
-          Home
+          {locale === "uk-UA" ? "Головна" : "Home"}
         </Link>
       </li>
       <li className={navLinkItemMobile}>
         <Link to="/about" className={navLinkTextMobile}>
-          About
+          {locale === "uk-UA" ? "Про автора" : "About"}
         </Link>
       </li>
       <li className={navLinkItemMobile}>
         <Link to="/blog" className={navLinkTextMobile}>
-          Blog
+          {locale === "uk-UA" ? "Блог" : "Blog"}
         </Link>
       </li>
     </ul>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    locale: state.locale,
+  };
+};
+export default connect(mapStateToProps)(Layout);

@@ -2,7 +2,7 @@ import * as React from "react";
 import Layout from "../../components/layout";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Footer from "../../components/footer";
+import { connect } from "react-redux";
 import Grid from "@mui/material/Grid";
 import {
   postImage,
@@ -31,33 +31,11 @@ const document = {
     },
   ],
 };
-const BlogPage = ({ data }) => {
-  const [locale, setLocale] = React.useState("uk-UA");
+const BlogPage = (props) => {
+  const { data, locale } = props;
   return (
     <>
       <Layout pageTitle="Freckled's blog">
-        <div className={buttonsContainer}>
-          <button
-            onClick={() => setLocale("uk-UA")}
-            className={
-              locale === "uk-UA"
-                ? `${localeButton} ${activeButton}`
-                : localeButton
-            }
-          >
-            UA
-          </button>
-          <button
-            onClick={() => setLocale("en-US")}
-            className={
-              locale === "en-US"
-                ? `${localeButton} ${activeButton}`
-                : localeButton
-            }
-          >
-            EN
-          </button>
-        </div>
         {locale === "uk-UA"
           ? data.ua.nodes.map((node) => (
               <Grid container spacing={3}>
@@ -158,5 +136,9 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-export default BlogPage;
+const mapStateToProps = (state) => {
+  return {
+    locale: state.locale,
+  };
+};
+export default connect(mapStateToProps)(BlogPage);

@@ -20,23 +20,7 @@
     line-height: 1.6;
 }
 .buttonsContainer{
+    margin-top: -3rem;
     margin-left: calc(100% - 65px);
     min-height: 60px;
-    border-image: repeating-linear-gradient(30deg, rebeccapurple, white 20px) 60;
-}
-.localeButton{
-    line-height: 1.5;
-    letter-spacing: 1.5px;
-    margin: 2% 1%;
-    text-transform: uppercase;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: transparent;
-    color: gray;
-}
-.activeButton{
-    font-weight: 900;
-    border: none;
-    color: rebeccapurple;
 }

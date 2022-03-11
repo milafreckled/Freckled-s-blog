@@ -3,7 +3,6 @@ import Layout from "../components/layout";
 import { article, homeQuote, quoteText, authorName } from "./base.module.css";
 import OpenQuote from "../svg/lapki-up.svg";
 import CloseQuote from "../svg/lapki-down.svg";
-import Footer from "../components/footer";
 // styles
 // data
 const links = [
@@ -63,11 +62,7 @@ const IndexPage = ({ serverData }) => {
           where you can learn, grow and aspire. Let's share inspiration
           together!
         </article>
-        {/* <StaticImage
-          alt="Blog's logo"
-          src="../images/freckled.png"
-          width={800}
-        /> */}
+
         <h2>Quote of the day:</h2>
         <blockquote className={homeQuote}>
           <OpenQuote className={quoteText} />
@@ -116,4 +111,5 @@ export async function getServerData() {
     },
   };
 }
+
 export default IndexPage;

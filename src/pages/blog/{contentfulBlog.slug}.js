@@ -1,23 +1,10 @@
 import * as React from "react";
 import Layout from "../../components/layout";
 import { graphql } from "gatsby";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
-// import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
-// import StarRoundedIcon from "@mui/icons-material/StarRounded";
-// import StarHalfRoundedIcon from "@mui/icons-material/StarHalfRounded";
-import Footer from "../../components/footer";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import {
-  heading,
-  bold,
-  alignedText,
-  postImage,
-  quote,
-} from "./contentful.module.css";
+import { bold, alignedText, postImage } from "./contentful.module.css";
 
 const BlogPost = ({ data }) => {
-  const Bold = ({ children }) => <span className={bold}>{children}</span>;
-  const Text = ({ children }) => <p className={alignedText}>{children}</p>;
   const post = data.contentfulBlog;
   const content = post.body?.childMarkdownRemark?.html;
   const img_src = getImage(post.thumbnail.gatsbyImageData);
