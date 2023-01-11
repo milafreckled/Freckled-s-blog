@@ -60,7 +60,7 @@ const BlogPage = (props) => {
                 </Grid>
               </Grid>
             ))
-          : data.en.nodes.map((node) => (
+          : data.en.nodes.map((node, idx) => (
               <Grid container spacing={3}>
                 <Grid item xs={12} lg={6} md={6}>
                   <GatsbyImage
@@ -84,8 +84,9 @@ const BlogPage = (props) => {
                     </p>
                   </article>
                 </Grid>
-                <hr />
+                {idx+1 !== data.en.nodes.length && <hr />}
               </Grid>
+       
             ))}
       </Layout>
     </>

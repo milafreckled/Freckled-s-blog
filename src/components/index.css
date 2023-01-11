@@ -1,4 +1,7 @@
+@import url("https://use.typekit.net/wdm4klk.css");
 :root, * {
-    --primary-color: #0928ea;
+    --primary-color: rebeccapurple;
     --link-text-color: #fff;
+    font-family: Cairo;
+    font-style: normal;
 }

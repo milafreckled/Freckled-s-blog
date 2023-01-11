@@ -3,8 +3,8 @@ import Layout from "../components/layout";
 import { article, homeQuote, quoteText, authorName } from "./base.module.css";
 import OpenQuote from "../svg/lapki-up.svg";
 import CloseQuote from "../svg/lapki-down.svg";
-// styles
-// data
+import { connect } from "react-redux";
+
 const links = [
   {
     text: "Tutorial",
@@ -52,18 +52,23 @@ const links = [
 ];
 
 // markup
-const IndexPage = ({ serverData }) => {
+const IndexPage = ({ serverData, locale }) => {
   const { data } = serverData;
+  React.useEffect(() => {
+    console.log('Locale: ', locale);
+  }, [])
   return (
     <>
       <Layout pageTitle="Home Page">
         <article className={article}>
-          Hello, dear reader! I am pleased to welcome you in this cozy place
+         {locale === "en-US" ? 
+          `Hello, dear reader! I am pleased to welcome you in this cozy place
           where you can learn, grow and aspire. Let's share inspiration
-          together!
+          together!`
+          : `Привіт, дорогий читач! Я рада вітати тебе у затишному мцсці, де ти можеш дізнаватись щось нове та надихатись.
+          Давай ділитися натхненням разом!`}
         </article>
-
-        <h2>Quote of the day:</h2>
+        <h2> {locale === "en-US" ? "Quote of the day:" : "Цитатa дня"}</h2>
         <blockquote className={homeQuote}>
           <OpenQuote className={quoteText} />
           {data.contents.quotes[0]?.quote}
@@ -110,6 +115,11 @@ export async function getServerData() {
       data: data,
     },
   };
-}
+};
+const mapStateToProps = (state) => {
+  return {
+    locale: state.locale,
+  };
+};
 
-export default IndexPage;
+export default connect(mapStateToProps)(IndexPage);

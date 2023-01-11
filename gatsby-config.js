@@ -37,20 +37,20 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `blog`,
-        path: `${__dirname}/blog`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `blog`,
+    //     path: `${__dirname}/src/pages/blog`,
+    //   },
+    // },
 
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: `${__dirname}/blog`,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-page-creator",
+    //   options: {
+    //     path: `${__dirname}/blog`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -65,9 +65,11 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: "c9hw3pub0ugj",
-        accessToken: "S94Poq0wRFP19srQeBP46_EU29tEU6-cCMTUVfIqwkA",
-        host: "preview.contentful.com",
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
+        // host: "preview.contentful.com",
+        localeFilter: locale => locale.code === 'en-US' || locale.code === 'uk-UA',
+        enableTags: "true"
       },
     },
     {
